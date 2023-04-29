@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 // register  customer profile
 const registerCustomer = asyncHandler(async (req, res) => {
-	const { name, telephone, address, email, password, pic } = req.body;
+	const { firstName, lastName, telephone, address, gender, country, email, password, pic } = req.body;
 
 	const customerExists = await Customer.findOne({ email });
 	if (customerExists) {
@@ -65,7 +65,7 @@ const authCustomer = asyncHandler(async (req, res) => {
 
 	if (!isMatch) {
 		res.status(400);
-		throw new Error("Invalid NIC or Password");
+		throw new Error("Invalid Email or Password");
 	} else {
 		res.status(201).json({
 			_id: customer._id,

@@ -1,12 +1,6 @@
 const express = require("express");
 const { registerAdmin, authAdmin, getAdminProfile, updateAdminProfile } = require("../controllers/adminController");
 const {
-	getVendorProfileById,
-	deleteVendorProfileById,
-	updateVendorProfileById,
-	getVendors,
-} = require("../controllers/vendorController");
-const {
 	getCustomers,
 	updateCustomerProfileById,
 	deleteCustomerProfileById,
@@ -20,11 +14,6 @@ router.route("/register").post(registerAdmin);
 router.route("/login").post(authAdmin);
 router.route("/view").get(protect, getAdminProfile);
 router.route("/edit").put(protect, updateAdminProfile);
-
-//Routes for Vendor account operations admin end
-router.route("/vendor/profile/view/:_id").get(protect, getVendorProfileById).delete(protect, deleteVendorProfileById);
-router.route("/vendor/profile/edit/:_id").put(protect, updateVendorProfileById);
-router.route("/vendors").get(protect, getVendors);
 
 //Routes for Customer account operations admin end
 router
