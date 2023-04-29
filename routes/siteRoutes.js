@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { protect } = require("../middleware/authAdminMiddleware");
+const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const {
 	addSite,
 	getSites,
@@ -17,8 +17,12 @@ router.route("/location/:id").get(getSitesForEachLocation);
 router.route("/get/:id").get(getSiteById);
 
 //admin's site routes
-router.route("/admin/add").post(protect, addSite);
-router.route("/admin/get").get(protect, getSites);
-router.route("/admin/get/:id").get(protect, getSiteById).put(protect, updateSite).delete(protect, deleteSite);
+router.route("/admin/add").post(protectAdmin, addSite);
+router.route("/admin/get").get(protectAdmin, getSites);
+router
+	.route("/admin/get/:id")
+	.get(protectAdmin, getSiteById)
+	.put(protectAdmin, updateSite)
+	.delete(protectAdmin, deleteSite);
 
 module.exports = router;
