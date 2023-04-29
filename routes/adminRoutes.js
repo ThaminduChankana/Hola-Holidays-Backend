@@ -6,21 +6,21 @@ const {
 	deleteCustomerProfileById,
 	getCustomerProfileById,
 } = require("../controllers/customerController");
-const { protect } = require("../middleware/authAdminMiddleware");
+const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
 //Routes for Admin Account Operations
 router.route("/register").post(registerAdmin);
 router.route("/login").post(authAdmin);
-router.route("/view").get(protect, getAdminProfile);
-router.route("/edit").put(protect, updateAdminProfile);
+router.route("/view").get(protectAdmin, getAdminProfile);
+router.route("/edit").put(protectAdmin, updateAdminProfile);
 
 //Routes for Customer account operations admin end
 router
 	.route("/customer/profile/view/:_id")
-	.get(protect, getCustomerProfileById)
-	.delete(protect, deleteCustomerProfileById);
-router.route("/customer/profile/edit/:_id").put(protect, updateCustomerProfileById);
-router.route("/customers").get(protect, getCustomers);
+	.get(protectAdmin, getCustomerProfileById)
+	.delete(protectAdmin, deleteCustomerProfileById);
+router.route("/customer/profile/edit/:_id").put(protectAdmin, updateCustomerProfileById);
+router.route("/customers").get(protectAdmin, getCustomers);
 
 module.exports = router;

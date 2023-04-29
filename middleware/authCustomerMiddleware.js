@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const Customer = require("../models/customerModel.js");
 const asyncHandler = require("express-async-handler");
 
-const protect = asyncHandler(async (req, res, next) => {
+const protectCustomer = asyncHandler(async (req, res, next) => {
 	let token;
 
 	if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
@@ -26,4 +26,4 @@ const protect = asyncHandler(async (req, res, next) => {
 	}
 });
 
-module.exports = { protect };
+module.exports = { protectCustomer };
