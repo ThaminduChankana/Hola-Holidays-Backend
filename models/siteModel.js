@@ -5,6 +5,7 @@ const siteSchema = mongoose.Schema({
 	siteName: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	siteLocation: {
 		type: String,
@@ -14,8 +15,14 @@ const siteSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	postalCode: {
+		type: Number,
+		required: true,
+	},
 	picURL: {
 		type: String,
+		default:
+			"https://res.cloudinary.com/dfmnpw0yp/image/upload/v1682779898/Hola%20Holidays/assets/zsa4281sbunh7hq1kuys.jpg",
 		required: true,
 	},
 	description: {
