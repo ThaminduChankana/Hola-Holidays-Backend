@@ -4,8 +4,9 @@ const asyncHandler = require("express-async-handler");
 const addSite = asyncHandler(async (req, res) => {
 	const {
 		siteName,
-		siteLocation,
 		country,
+		province,
+		siteLocation,
 		postalCode,
 		picURL,
 		description,
@@ -20,7 +21,7 @@ const addSite = asyncHandler(async (req, res) => {
 		throw new Error("Site Already Exists !");
 	} else {
 		if (
-			(!siteName || !siteLocation || !country || !postalCode,
+			(!siteName || !country || !province || !siteLocation || !postalCode,
 			!picURL || !description || !recommendations || !specialEvents || !specialInstructions)
 		) {
 			res.status(400);
@@ -28,8 +29,9 @@ const addSite = asyncHandler(async (req, res) => {
 		} else {
 			const site = new Site({
 				siteName,
-				siteLocation,
 				country,
+				province,
+				siteLocation,
 				postalCode,
 				picURL,
 				description,
@@ -51,8 +53,8 @@ const getSites = asyncHandler(async (req, res) => {
 });
 
 const getSitesForEachLocation = asyncHandler(async (req, res) => {
-	const siteLocation = req.params.id;
-	const sites = await Site.find({ siteLocation: siteLocation });
+	const province = req.params.id;
+	const sites = await Site.find({ province: province });
 	res.status(201).json(sites);
 });
 
@@ -69,8 +71,9 @@ const getSiteById = asyncHandler(async (req, res) => {
 const updateSite = asyncHandler(async (req, res) => {
 	const {
 		siteName,
-		siteLocation,
 		country,
+		province,
+		siteLocation,
 		postalCode,
 		picURL,
 		description,
@@ -83,8 +86,9 @@ const updateSite = asyncHandler(async (req, res) => {
 
 	if (site) {
 		site.siteName = siteName;
-		site.siteLocation = siteLocation;
 		site.country = country;
+		site.province = province;
+		site.siteLocation = siteLocation;
 		site.postalCode = postalCode;
 		site.picURL = picURL;
 		site.description = description;
