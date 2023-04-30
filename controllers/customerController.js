@@ -194,7 +194,7 @@ const deleteCustomerProfile = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.customer._id);
 
 	if (customer) {
-		await customer.remove();
+		await customer.deleteOne();
 		res.json({ message: "Customer Removed !" });
 	} else {
 		res.status(404);
@@ -207,7 +207,7 @@ const deleteCustomerProfileById = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.params._id);
 
 	if (customer) {
-		await customer.remove();
+		await customer.deleteOne();
 		res.json({ message: "Customer Removed !" });
 	} else {
 		res.status(404);
