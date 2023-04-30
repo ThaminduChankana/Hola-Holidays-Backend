@@ -53,8 +53,8 @@ const getSites = asyncHandler(async (req, res) => {
 });
 
 const getSitesForEachLocation = asyncHandler(async (req, res) => {
-	const siteLocation = req.params.id;
-	const sites = await Site.find({ siteLocation: siteLocation });
+	const province = req.params.id;
+	const sites = await Site.find({ province: province });
 	res.status(201).json(sites);
 });
 
