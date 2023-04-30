@@ -7,11 +7,15 @@ const siteSchema = mongoose.Schema({
 		required: true,
 		unique: true,
 	},
-	siteLocation: {
+	country: {
 		type: String,
 		required: true,
 	},
-	country: {
+	province: {
+		type: String,
+		required: true,
+	},
+	siteLocation: {
 		type: String,
 		required: true,
 	},
