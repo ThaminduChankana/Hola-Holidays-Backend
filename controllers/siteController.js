@@ -13,6 +13,7 @@ const addSite = asyncHandler(async (req, res) => {
 		recommendations,
 		specialEvents,
 		specialInstructions,
+		moreInfoURL,
 	} = req.body;
 
 	const siteExists = await Site.findOne({ siteName });
@@ -22,7 +23,7 @@ const addSite = asyncHandler(async (req, res) => {
 	} else {
 		if (
 			(!siteName || !country || !province || !siteLocation || !postalCode,
-			!picURL || !description || !recommendations || !specialEvents || !specialInstructions)
+			!picURL || !description || !recommendations || !specialEvents || !specialInstructions || !moreInfoURL)
 		) {
 			res.status(400);
 			throw new Error("Please Fill all the fields");
@@ -38,6 +39,7 @@ const addSite = asyncHandler(async (req, res) => {
 				recommendations,
 				specialEvents,
 				specialInstructions,
+				moreInfoURL
 			});
 
 			const addedSite = await site.save();
@@ -80,6 +82,7 @@ const updateSite = asyncHandler(async (req, res) => {
 		recommendations,
 		specialEvents,
 		specialInstructions,
+		moreInfoURL
 	} = req.body;
 
 	const site = await Site.findById(req.params.id);
@@ -95,6 +98,7 @@ const updateSite = asyncHandler(async (req, res) => {
 		site.recommendations = recommendations;
 		site.specialEvents = specialEvents;
 		site.specialInstructions = specialInstructions;
+		site.moreInfoURL = moreInfoURL;
 
 		const updatedSite = await site.save();
 		res.json(updatedSite);
