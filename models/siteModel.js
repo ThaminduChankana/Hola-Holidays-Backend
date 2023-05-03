@@ -45,6 +45,10 @@ const siteSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	moreInfoURL: {
+		type: String, 
+		required: true
+	},
 });
 
 const Site = mongoose.model("Site", siteSchema);
