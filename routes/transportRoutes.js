@@ -10,10 +10,15 @@ const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
 //routes for bus details
-router.route("/add/").post(protectAdmin,addNewTransport);
-router.route("/delete/:id").delete(protectAdmin,deleteTransport);
-router.route("/get/").get(getTransport);
+router.route("/").get(getTransport);
 router.route("/get/:id").get(getOneTransport);
-router.route("/update/:id").put(protectAdmin,updateTransport);
+
+router.route("/admin/add").post(protectAdmin,addNewTransport);
+router.route("/admin/get").get(protectAdmin,getTransport);
+router
+	.route("/admin/get/:id")
+	.get(protectAdmin, getOneTransport)
+	.put(protectAdmin, updateTransport)
+	.delete(protectAdmin, deleteTransport);
 
 module.exports = router;
