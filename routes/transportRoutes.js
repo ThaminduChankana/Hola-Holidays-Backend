@@ -9,10 +9,11 @@ const {
 const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
-//routes for bus details
+//routes for bus details - customer
 router.route("/").get(getTransport);
 router.route("/get/:id").get(getOneTransport);
 
+//routes for bus details - admin
 router.route("/admin/add").post(protectAdmin,addNewTransport);
 router.route("/admin/get").get(protectAdmin,getTransport);
 router
