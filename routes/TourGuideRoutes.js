@@ -1,6 +1,7 @@
 const express = require("express");
 const { protectAdmin } = require("../middleware/authAdminMiddleware");
 
+
 const { addGuide,
         getGuides,
         getGuidesById,
@@ -11,7 +12,7 @@ const router = express.Router();
 
 
 // customer routes
-router.route("/").get(getGuides);
+router.route("/customer/get").get(getGuides);
 router.route("/get/:id").get(getGuidesById);
 
 //admin's site routes

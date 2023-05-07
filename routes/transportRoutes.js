@@ -6,13 +6,20 @@ const {
 	deleteTransport,
 	updateTransport,
 } = require("../controllers/transportController");
+const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
-//routes for bus details
-router.route("/add/").post(addNewTransport);
-router.route("/delete/:id").delete(deleteTransport);
-router.route("/get/").get(getTransport);
+//routes for bus details - customer
+router.route("/").get(getTransport);
 router.route("/get/:id").get(getOneTransport);
-router.route("/update/:id").put(updateTransport);
+
+//routes for bus details - admin
+router.route("/admin/add").post(protectAdmin,addNewTransport);
+router.route("/admin/get").get(protectAdmin,getTransport);
+router
+	.route("/admin/get/:id")
+	.get(protectAdmin, getOneTransport)
+	.put(protectAdmin, updateTransport)
+	.delete(protectAdmin, deleteTransport);
 
 module.exports = router;
