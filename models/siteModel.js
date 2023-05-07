@@ -46,8 +46,8 @@ const siteSchema = mongoose.Schema({
 		required: true,
 	},
 	moreInfoURL: {
-		type: String, 
-		required: true
+		type: String,
+		required: true,
 	},
 });
 
