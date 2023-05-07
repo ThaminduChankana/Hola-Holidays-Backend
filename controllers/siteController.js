@@ -39,7 +39,7 @@ const addSite = asyncHandler(async (req, res) => {
 				recommendations,
 				specialEvents,
 				specialInstructions,
-				moreInfoURL
+				moreInfoURL,
 			});
 
 			const addedSite = await site.save();
@@ -82,7 +82,7 @@ const updateSite = asyncHandler(async (req, res) => {
 		recommendations,
 		specialEvents,
 		specialInstructions,
-		moreInfoURL
+		moreInfoURL,
 	} = req.body;
 
 	const site = await Site.findById(req.params.id);
