@@ -10,6 +10,7 @@ const siteRoutes = require("./routes/siteRoutes");
 const transportRoute = require("./routes/transportRoutes");
 const hotelRoutes = require("./routes/hotelRoutes");
 const roomRoutes = require("./routes/roomRoutes");
+const reservationRoutes = require("./routes/reservationRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/sites", siteRoutes);
 app.use("/transport", transportRoute);
 app.use("/hotels", hotelRoutes);
 app.use("/rooms", roomRoutes);
+app.use("/reservations", reservationRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
