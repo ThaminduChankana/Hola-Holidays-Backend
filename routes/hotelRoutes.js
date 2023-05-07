@@ -8,7 +8,6 @@ const {
 	gethotelsByCustomer,
 } = require("../controllers/hotelController");
 const { protectAdmin } = require("../middleware/authAdminMiddleware");
-const { protectCustomer } = require("../middleware/authCustomerMiddleware");
 const router = express.Router();
 
 router.route("/hotel/create").post(protectAdmin, addHotel);

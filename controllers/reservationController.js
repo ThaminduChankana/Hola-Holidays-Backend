@@ -93,8 +93,6 @@ const addReservation = asyncHandler(async (req, res) => {
 const updateReservation = asyncHandler(async (req, res) => {
 	const { noOfRooms } = req.body;
 
-	console.log(noOfRooms);
-
 	const reservation = await Reservation.findById(req.params.id);
 
 	const room = await Room.findOne({ _id: reservation.room.toString() });
