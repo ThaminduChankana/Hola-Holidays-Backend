@@ -1,9 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const TourGuide = require("../models/TourGuideModel");
 
-
 const addGuide = asyncHandler(async (req, res) => {
-	const { name, gender, language, location, description,fee, phoneNumber } = req.body;
+	const { name, gender, language, location, description, fee, phoneNumber } = req.body;
 
 	if (!name || !gender || !language || !location || !description || !fee || !phoneNumber) {
 		res.status(400);
@@ -31,7 +30,6 @@ const getGuides = asyncHandler(async (req, res) => {
 	res.json(tourGuides);
 });
 
-
 const getGuidesById = asyncHandler(async (req, res) => {
 	const tourGuide = await TourGuide.findById(req.params.id);
 
@@ -42,9 +40,8 @@ const getGuidesById = asyncHandler(async (req, res) => {
 	}
 });
 
-
 const updateGuide = asyncHandler(async (req, res) => {
-	const { name, gender, language, location,description, fee, phoneNumber } = req.body;
+	const { name, gender, language, location, description, fee, phoneNumber } = req.body;
 
 	const guide = await TourGuide.findById(req.params.id);
 
@@ -77,7 +74,6 @@ const deleteGuide = asyncHandler(async (req, res) => {
 		throw new Error("Tour guide not Found");
 	}
 });
-
 
 module.exports = {
 	addGuide,
