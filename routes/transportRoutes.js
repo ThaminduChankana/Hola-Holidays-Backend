@@ -14,8 +14,8 @@ router.route("/").get(getTransport);
 router.route("/get/:id").get(getOneTransport);
 
 //routes for bus details - admin
-router.route("/admin/add").post(protectAdmin,addNewTransport);
-router.route("/admin/get").get(protectAdmin,getTransport);
+router.route("/admin/add").post(protectAdmin, addNewTransport);
+router.route("/admin/get").get(protectAdmin, getTransport);
 router
 	.route("/admin/get/:id")
 	.get(protectAdmin, getOneTransport)
