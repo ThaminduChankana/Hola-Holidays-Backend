@@ -1,6 +1,5 @@
 const express = require("express");
 const { getRooms, createRoom, getRoomById, updateRoom, deleteRoom } = require("../controllers/roomController");
-const { getRooms } = require("../controllers/roomController");
 const {
 	getReservations,
 	addReservation,

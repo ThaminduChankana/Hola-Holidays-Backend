@@ -1,6 +1,12 @@
 const express = require("express");
-const { gethotels, addHotel, updateHotel, getHotelById, deleteHotel } = require("../controllers/hotelController");
-const { gethotelsByCustomer, getHotelById } = require("../controllers/hotelController");
+const {
+	gethotels,
+	addHotel,
+	updateHotel,
+	getHotelById,
+	deleteHotel,
+	gethotelsByCustomer,
+} = require("../controllers/hotelController");
 const { protectAdmin } = require("../middleware/authAdminMiddleware");
 const { protectCustomer } = require("../middleware/authCustomerMiddleware");
 const router = express.Router();
