@@ -4,7 +4,7 @@ const Customer = require("../models/customerModel");
 
 const getRooms = asyncHandler(async (req, res) => {
 	const rooms = await Room.find({ hotel: req.params.id });
-	res.json(rooms);
+	res.status(200).json(rooms);
 });
 
 const createRoom = asyncHandler(async (req, res) => {

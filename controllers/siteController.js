@@ -51,7 +51,7 @@ const addSite = asyncHandler(async (req, res) => {
 
 const getSites = asyncHandler(async (req, res) => {
 	const sites = await Site.find();
-	res.json(sites);
+	res.status(200).json(sites);
 });
 
 const getSitesForEachLocation = asyncHandler(async (req, res) => {
@@ -64,7 +64,7 @@ const getSiteById = asyncHandler(async (req, res) => {
 	const site = await Site.findById(req.params.id);
 
 	if (site) {
-		res.json(site);
+		res.status(200).json(site);
 	} else {
 		res.status(404).json({ message: "Site not found" });
 	}

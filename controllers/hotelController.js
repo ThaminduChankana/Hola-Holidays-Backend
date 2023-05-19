@@ -8,7 +8,7 @@ const gethotels = asyncHandler(async (req, res) => {
 
 const gethotelsByCustomer = asyncHandler(async (req, res) => {
 	const items = await Hotel.find();
-	res.json(items);
+	res.status(200).json(items);
 });
 
 const addHotel = asyncHandler(async (req, res) => {
@@ -60,7 +60,7 @@ const getHotelById = asyncHandler(async (req, res) => {
 	const hotel = await Hotel.findById(req.params.id);
 
 	if (hotel) {
-		res.json(hotel);
+		res.status(200).json(hotel);
 	} else {
 		res.status(404).json({ message: "Hotel not found" });
 	}
